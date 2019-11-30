@@ -4,6 +4,12 @@
             <div class="h-screen flex flex-col">
                 <div class="md:flex">
                     <div class="bg-indigo-darkest md:flex-no-shrink md:w-56 px-6 py-4 flex items-center justify-between md:justify-center">
+                        <dropdown class="md:hidden" placement="bottom-end">
+                            <svg class="fill-white w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" /></svg>
+                            <div slot="dropdown" class="mt-2 px-8 py-4 shadow-lg bg-indigo-darker rounded">
+                                <main-menu :url="url()" />
+                            </div>
+                        </dropdown>
                     </div>
                 </div>
                 <div class="flex flex-grow overflow-hidden">
@@ -17,8 +23,13 @@
 </template>
 
 <script>
+	import Dropdown from '@/Shared/Dropdown'
+    import MainMenu from '@/Shared/MainMenu'
 	export default {
-		components: {},
+		components: {
+          Dropdown,
+          MainMenu
+        },
 		data() {
 			return {
 				showUserMenu: false,
@@ -26,6 +37,9 @@
 			}
 		},
 		methods: {
+		    url() {
+		    	return location.pathname.substr(1)
+		    },
 		},
 	}
 </script>
