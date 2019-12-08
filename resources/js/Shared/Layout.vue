@@ -27,7 +27,7 @@
                             </div>
                             <div slot="dropdown" class="mt-2 py-2 shadow-lg bg-white rounded text-sm">
                                 <a class="block px-6 py-2 hover:bg-indigo hover:text-white" href="#">My Profile</a>
-                                <a class="block px-6 py-2 hover:bg-indigo hover:text-white" href="#">Manage Users</a>
+                                <inertia-link class="block px-6 py-2 hover:bg-indigo hover:text-white" :href="route('users')">Manage Users</inertia-link>
                                 <a class="block px-6 py-2 hover:bg-indigo hover:text-white" href="#">Logout</a>
                             </div>
                         </dropdown>
