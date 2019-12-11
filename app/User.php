@@ -17,6 +17,11 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
         'owner' => 'boolean',
     ];
 
+    public function isDemoUser()
+    {
+        return $this->email === 'johndoe@example.com';
+    }
+
     public function getNameAttribute()
     {
         return $this->first_name.' '.$this->last_name;

@@ -16,10 +16,10 @@
                     <option value="only">Only Trashed</option>
                 </select>
             </search-filter>
-            <inertia-link class="btn-indigo" href="#">
+            <a class="btn-indigo" href="#">
                 <span>Create</span>
                 <span class="hidden md:inline">User</span>
-            </inertia-link>
+            </a>
         </div>
         <div class="bg-white rounded shadow overflow-x-auto">
             <table class="w-full whitespace-no-wrap">
@@ -46,9 +46,9 @@
                         </a>
                     </td>
                     <td class="border-t w-px">
-                        <a class="px-4 flex items-center" href="#" tabindex="-1">
+                        <inertia-link class="px-4 flex items-center" :href="route('users.edit', user.id)" tabindex="-1">
                             <icon name="cheveron-right" class="block w-6 h-6 fill-grey" />
-                        </a>
+                        </inertia-link>
                     </td>
                 </tr>
                 <tr v-if="users.length === 0">
