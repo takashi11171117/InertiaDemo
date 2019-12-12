@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use Inertia\Inertia;
+use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Redirect;
@@ -25,6 +26,32 @@ class UsersController extends Controller
                                               ];
                                           }),
         ]);
+    }
+
+    public function create()
+    {
+        return Inertia::render('Users/Create');
+    }
+
+    public function store()
+    {
+        Request::validate([
+            'first_name' => ['required', 'max:50'],
+            'last_name' => ['required', 'max:50'],
+            'email' => ['required', 'max:50', 'email', Rule::unique('users')],
+            'password' => ['nullable'],
+            'owner' => ['required', 'boolean'],
+        ]);
+
+        User::create([
+            'first_name' => Request::get('first_name'),
+            'last_name' => Request::get('last_name'),
+            'email' => Request::get('email'),
+            'password' => Request::get('password'),
+            'owner' => Request::get('owner'),
+        ]);
+
+        return Redirect::route('users')->with('success', 'User created.');
     }
 
     public function edit(User $user)

@@ -16,10 +16,10 @@
                     <option value="only">Only Trashed</option>
                 </select>
             </search-filter>
-            <a class="btn-indigo" href="#">
+            <inertia-link class="btn-indigo" :href="route('users.create')">
                 <span>Create</span>
                 <span class="hidden md:inline">User</span>
-            </a>
+            </inertia-link>
         </div>
         <div class="bg-white rounded shadow overflow-x-auto">
             <table class="w-full whitespace-no-wrap">
