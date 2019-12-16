@@ -38,6 +38,7 @@
 			SelectInput,
 			TextInput,
 		},
+		remember: 'form',
 		data() {
 			return {
 				sending: false,
