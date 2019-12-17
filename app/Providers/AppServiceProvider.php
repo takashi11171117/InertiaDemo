@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 
 class AppServiceProvider extends ServiceProvider
@@ -24,7 +25,20 @@ class AppServiceProvider extends ServiceProvider
             return md5_file(public_path('mix-manifest.json'));
         });
 
+
+
         Inertia::share([
+            'auth' => function () {
+                return [
+                    'user' => Auth::user() ? [
+                        'id' => Auth::user()->id,
+                        'first_name' => Auth::user()->first_name,
+                        'last_name' => Auth::user()->last_name,
+                        'email' => Auth::user()->email,
+                        'role' => Auth::user()->role,
+                    ] : null,
+                ];
+            },
             'errors' => function () {
                 return Session::get('errors')
                     ? Session::get('errors')->getBag('default')->getMessages()
