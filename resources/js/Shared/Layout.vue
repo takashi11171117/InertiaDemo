@@ -35,6 +35,7 @@
                 <div class="flex flex-grow overflow-hidden">
                     <main-menu :url="url()" class="bg-indigo-darker flex-no-shrink w-56 p-12 hidden md:block overflow-y-auto" />
                     <div class="w-full overflow-hidden px-4 py-8 md:p-12 overflow-y-auto" scroll-region>
+                        <flash-messages />
                         <slot />
                     </div>
                 </div>
@@ -45,12 +46,15 @@
 
 <script>
 	import Dropdown from '@/Shared/Dropdown'
+    import FlashMessages from '@/Shared/FlashMessages'
     import MainMenu from '@/Shared/MainMenu'
     import Logo from '@/Shared/Logo'
     import Icon from '@/Shared/Icon'
+
 	export default {
 		components: {
           Dropdown,
+          FlashMessages,
           MainMenu,
           Logo,
           Icon

@@ -39,6 +39,12 @@ class AppServiceProvider extends ServiceProvider
                     ] : null,
                 ];
             },
+            'flash' => function () {
+                return [
+                    'success' => Session::get('success'),
+                    'error' => Session::get('error'),
+                ];
+            },
             'errors' => function () {
                 return Session::get('errors')
                     ? Session::get('errors')->getBag('default')->getMessages()
